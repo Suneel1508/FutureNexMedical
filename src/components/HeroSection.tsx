@@ -4,11 +4,11 @@ import { Play, Calendar } from 'lucide-react'
 
 const HeroSection = () => {
   return (
-    <section className="relative bg-gradient-primary text-white py-20 lg:py-32 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-sage-100 to-sage-50 text-gray-900 py-20 lg:py-32 overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
+      <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23475c47' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
         }} />
       </div>
 
@@ -17,69 +17,60 @@ const HeroSection = () => {
           {/* Left Column - Content */}
           <div className="space-y-8 animate-fade-in">
             <div className="space-y-4">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                Achieve your{' '}
-                <span className="text-yellow-300">Medical Career Goals</span>{' '}
-                with FutureNex
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-900">
+                Steps to Begin Your{' '}
+                <span className="text-primary-700">Study Abroad</span>{' '}
+                Adventure
               </h1>
-              <p className="text-xl md:text-2xl text-blue-100 leading-relaxed">
-                Expert guidance for MCAT preparation, medical school admissions, 
-                and USMLE/COMLEX success
+              <p className="text-xl md:text-2xl text-gray-700 leading-relaxed">
+                Preparing for the MCAT can be daunting, but you're not alone. At 
+                MCATprep, we're dedicated to providing you with the resources, 
+                support, and guidance you need to excel on your exam and achieve 
+                your dreams of becoming a healthcare professional.
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center bg-white text-primary-600 font-bold py-4 px-8 rounded-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                className="inline-flex items-center justify-center bg-secondary-500 text-white font-bold py-4 px-8 rounded-lg hover:bg-secondary-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
                 <Calendar className="h-5 w-5 mr-2" />
-                Book a Meeting
+                STUDY ABROAD
               </Link>
               <Link
                 to="/services"
-                className="inline-flex items-center justify-center border-2 border-white text-white font-bold py-4 px-8 rounded-lg hover:bg-white hover:text-primary-600 transition-all duration-300"
+                className="inline-flex items-center justify-center border-2 border-gray-800 text-gray-800 font-bold py-4 px-8 rounded-lg hover:bg-gray-800 hover:text-white transition-all duration-300"
               >
-                Learn More
+                WHY FUTURENEX →
               </Link>
             </div>
 
             {/* Trust Indicators */}
-            <div className="flex flex-wrap items-center gap-8 pt-8 border-t border-blue-400/30">
+            <div className="flex flex-wrap items-center gap-8 pt-8 border-t border-sage-200">
               <div className="text-center">
-                <div className="text-2xl font-bold">95%</div>
-                <div className="text-sm text-blue-200">Success Rate</div>
+                <div className="text-2xl font-bold text-primary-700">95%</div>
+                <div className="text-sm text-gray-600">Success Rate</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold">500+</div>
-                <div className="text-sm text-blue-200">Students Placed</div>
+                <div className="text-2xl font-bold text-primary-700">500+</div>
+                <div className="text-sm text-gray-600">Students Placed</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold">10+</div>
-                <div className="text-sm text-blue-200">Years Experience</div>
+                <div className="text-2xl font-bold text-primary-700">10+</div>
+                <div className="text-sm text-gray-600">Years Experience</div>
               </div>
             </div>
           </div>
 
-          {/* Right Column - Video */}
+          {/* Right Column - Image */}
           <div className="animate-slide-up">
             <div className="relative">
-              <div className="hero-video-container bg-white/10 backdrop-blur-sm rounded-2xl p-4">
-                <iframe
-                  src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                  title="FutureNex Medical Consulting Introduction"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="w-full h-full rounded-lg"
-                />
-              </div>
-              
-              {/* Play Button Overlay */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="bg-white/20 backdrop-blur-sm rounded-full p-6 animate-bounce-gentle">
-                  <Play className="h-12 w-12 text-white fill-current" />
-                </div>
-              </div>
+              <img
+                src="https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt="Student with books and headphones"
+                className="w-full h-auto rounded-2xl shadow-2xl"
+              />
             </div>
           </div>
         </div>

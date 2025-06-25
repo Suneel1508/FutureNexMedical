@@ -122,7 +122,7 @@ const Header = () => {
       </div>
 
       {/* Main Header */}
-      <header className={`sticky top-0 z-50 bg-white transition-all duration-300 ${
+      <header className={`sticky top-0 z-50 bg-sage-700 transition-all duration-300 ${
         isScrolled ? 'shadow-lg' : 'shadow-sm'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -130,14 +130,14 @@ const Header = () => {
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-3 group">
               <div className="relative">
-                <GraduationCap className="h-8 w-8 text-primary-600 group-hover:text-primary-700 transition-colors" />
-                <Stethoscope className="h-5 w-5 text-secondary-600 absolute -bottom-1 -right-1 group-hover:text-secondary-700 transition-colors" />
+                <GraduationCap className="h-8 w-8 text-secondary-400 group-hover:text-secondary-300 transition-colors" />
+                <Stethoscope className="h-5 w-5 text-white absolute -bottom-1 -right-1 group-hover:text-secondary-200 transition-colors" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors">
+                <h1 className="text-2xl font-bold text-white group-hover:text-secondary-200 transition-colors">
                   FutureNex
                 </h1>
-                <p className="text-xs text-gray-600 -mt-1">Medical Consulting</p>
+                <p className="text-xs text-sage-200 -mt-1">Medical Consulting</p>
               </div>
             </Link>
 
@@ -156,7 +156,7 @@ const Header = () => {
                         to={subItem.href}
                         className={`block px-4 py-2 text-sm hover:bg-gray-50 transition-colors ${
                           subItem.highlighted 
-                            ? 'text-secondary-600 font-semibold' 
+                            ? 'text-primary-600 font-semibold' 
                             : 'text-gray-700 hover:text-primary-600'
                         }`}
                       >
@@ -170,10 +170,10 @@ const Header = () => {
 
             {/* Cart and Mobile Menu */}
             <div className="flex items-center space-x-4">
-              <Link to="/cart" className="relative p-2 text-gray-700 hover:text-primary-600 transition-colors">
+              <Link to="/cart" className="relative p-2 text-white hover:text-secondary-300 transition-colors">
                 <ShoppingCart className="h-6 w-6" />
                 {cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-primary-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  <span className="absolute -top-1 -right-1 bg-secondary-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                     {cartCount}
                   </span>
                 )}
@@ -182,7 +182,7 @@ const Header = () => {
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="lg:hidden p-2 text-gray-700 hover:text-primary-600 transition-colors"
+                className="lg:hidden p-2 text-white hover:text-secondary-300 transition-colors"
               >
                 {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </button>
@@ -204,7 +204,7 @@ const Header = () => {
                         to={subItem.href}
                         className={`block py-1 text-sm transition-colors ${
                           subItem.highlighted 
-                            ? 'text-secondary-600 font-semibold' 
+                            ? 'text-primary-600 font-semibold' 
                             : 'text-gray-600 hover:text-primary-600'
                         }`}
                         onClick={() => setIsMobileMenuOpen(false)}
