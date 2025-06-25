@@ -110,7 +110,7 @@ const AboutServices = () => {
                   className="flex items-center space-x-3 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
                   style={{ animationDelay: `${index * 0.05}s` }}
                 >
-                  <CheckCircle className="h-5 w-5 text-secondary-600 flex-shrink-0" />
+                  <CheckCircle className="h-5 w-5 text-primary-600 flex-shrink-0" />
                   <span className="text-gray-700 font-medium">{service}</span>
                 </div>
               ))}
