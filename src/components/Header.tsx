@@ -130,8 +130,16 @@ const Header = () => {
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-3 group">
               <div className="relative">
-                <GraduationCap className="h-8 w-8 text-secondary-400 group-hover:text-secondary-300 transition-colors" />
-                <Stethoscope className="h-5 w-5 text-white absolute -bottom-1 -right-1 group-hover:text-secondary-200 transition-colors" />
+                {/* Original FutureNex Logo Base */}
+                <div className="w-10 h-10 bg-gradient-to-br from-secondary-400 to-secondary-600 rounded-full flex items-center justify-center relative group-hover:scale-105 transition-transform">
+                  <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
+                    <div className="w-3 h-3 bg-sage-700 rounded-full"></div>
+                  </div>
+                  {/* Graduation Cap on top */}
+                  <GraduationCap className="h-5 w-5 text-secondary-300 absolute -top-1 -right-1 transform rotate-12 group-hover:text-secondary-200 transition-colors" />
+                  {/* Stethoscope accent */}
+                  <Stethoscope className="h-3 w-3 text-white absolute -bottom-1 -left-1 transform -rotate-12 group-hover:text-secondary-200 transition-colors" />
+                </div>
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-white group-hover:text-secondary-200 transition-colors">
