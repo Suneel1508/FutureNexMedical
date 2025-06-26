@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { 
   Phone, 
   Mail, 
@@ -8,13 +8,20 @@ import {
   X, 
   ChevronDown,
   GraduationCap,
-  Stethoscope
+  Stethoscope,
+  User,
+  LogOut
 } from 'lucide-react'
+import { useAuth } from '../contexts/AuthContext'
+import { useCart } from '../contexts/CartContext'
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [cartCount] = useState(0) // Placeholder for cart functionality
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
+  const { user, logout } = useAuth()
+  const { getTotalItems } = useCart()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +30,12 @@ const Header = () => {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  const handleLogout = () => {
+    logout()
+    navigate('/')
+    setIsUserMenuOpen(false)
+  }
 
   const navigationItems = [
     {
@@ -42,7 +55,7 @@ const Header = () => {
     {
       title: 'MCAT',
       items: [
-        { name: 'One-on-One Tutoring', href: '#', highlighted: true },
+        { name: 'One-on-One Tutoring', href: '/services/mcat/one-on-one-tutoring', highlighted: true },
         { name: 'Group Classes', href: '#' },
         { name: 'Self-Paced Course', href: '#' },
         { name: 'Free MCAT Resources', href: '#' },
@@ -52,7 +65,7 @@ const Header = () => {
     {
       title: 'Admissions',
       items: [
-        { name: 'College & Direct Medical (BS/MD & BA/MD)', href: '#', highlighted: true },
+        { name: 'College & Direct Medical (BS/MD & BA/MD)', href: '/services/admissions/bs-md-programs', highlighted: true },
         { name: 'Medical School Application Advising', href: '#', highlighted: true },
         { name: 'Interview Preparation', href: '#' },
         { name: 'Personal Statement Review', href: '#' },
@@ -113,9 +126,48 @@ const Header = () => {
               <Link to="/blog" className="text-gray-700 hover:text-primary-600 transition-colors">
                 Blog
               </Link>
-              <Link to="/login" className="bg-primary-600 text-white px-4 py-1 rounded-md hover:bg-primary-700 transition-colors">
-                Student Login
-              </Link>
+              {!user ? (
+                <Link to="/login" className="bg-primary-600 text-white px-4 py-1 rounded-md hover:bg-primary-700 transition-colors">
+                  Student Login
+                </Link>
+              ) : (
+                <div className="relative">
+                  <button
+                    onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+                    className="flex items-center space-x-2 text-gray-700 hover:text-primary-600 transition-colors"
+                  >
+                    <User className="h-4 w-4" />
+                    <span>{user.name}</span>
+                    <ChevronDown className="h-3 w-3" />
+                  </button>
+                  
+                  {isUserMenuOpen && (
+                    <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+                      <Link
+                        to="/dashboard"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        onClick={() => setIsUserMenuOpen(false)}
+                      >
+                        Dashboard
+                      </Link>
+                      <Link
+                        to="/profile"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        onClick={() => setIsUserMenuOpen(false)}
+                      >
+                        Profile Settings
+                      </Link>
+                      <button
+                        onClick={handleLogout}
+                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
+                        <LogOut className="h-4 w-4 inline mr-2" />
+                        Logout
+                      </button>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -180,9 +232,9 @@ const Header = () => {
             <div className="flex items-center space-x-4">
               <Link to="/cart" className="relative p-2 text-white hover:text-secondary-300 transition-colors">
                 <ShoppingCart className="h-6 w-6" />
-                {cartCount > 0 && (
+                {getTotalItems() > 0 && (
                   <span className="absolute -top-1 -right-1 bg-secondary-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                    {cartCount}
+                    {getTotalItems()}
                   </span>
                 )}
               </Link>

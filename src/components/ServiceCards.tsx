@@ -14,14 +14,14 @@ const ServiceCards = () => {
       icon: GraduationCap,
       title: 'College & Direct Med Admissions',
       description: 'Navigate BS/MD and BA/MD programs with expert guidance from our experienced consultants.',
-      link: '#',
+      link: '/services/admissions/bs-md-programs',
       color: 'bg-primary-500'
     },
     {
       icon: BookOpen,
       title: 'MCAT Tutoring',
       description: 'Personalized MCAT preparation with proven strategies and comprehensive study plans.',
-      link: '#',
+      link: '/services/mcat/one-on-one-tutoring',
       color: 'bg-secondary-500'
     },
     {
